@@ -1,14 +1,24 @@
 <html>
 <head>
     <title>Web Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
-<p>Say <a href="hello">Hello</a></p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">GOOGLE <small>DRIVE BUDDY</small></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+
 
 <form method="post" action="hello">
-    <h2>Name:</h2>
-    <input type="text" id="say-hello-text-input" name="name" />
-    <input type="submit" id="say-hello-button" value="Say Hello" />
+    <h3> Welcome to the Google Drive Buddy Applciation. Please Login to your Google Drive to continue!!!</h3>
+    <!--<input type="submit" name="button3" value="Google Drive SignIn" /> -->
+    <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-success" name="button3">Google Drive SignIn</button>
+    </div>
 </form>
 </body>
 </html>
