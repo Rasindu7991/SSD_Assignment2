@@ -15,7 +15,7 @@
             background-image: url("https://www.epicentrofestival.com/wp-content/uploads/2019/10/PNG-Clipart-hd-vector-cqrecords-flower-Color-Picker.jpg");
 
             /* Full height */
-            height: 100%;
+            height: 50%;
 
             /* Center and scale the image nicely */
             background-position: center;
@@ -25,7 +25,6 @@
     </style>
 </head>
 <body>
-<div class="bg"></div>
 <center>
     <h1>
         <a href="" class="typewrite" data-period="2000" data-type='[ "DOWNLOADED SUCESSFULLY!!!" ]'>
@@ -95,7 +94,7 @@
 
     function relocate_files()
     {
-        location.href = "response.jsp";
+        location.href = "viewDownloadFiles.jsp";
     }
 </script>
 </body>

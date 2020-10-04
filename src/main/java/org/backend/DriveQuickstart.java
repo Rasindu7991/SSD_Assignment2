@@ -1,4 +1,4 @@
-package org.gradle.demo;
+package org.backend;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -22,16 +22,19 @@ import java.util.Collections;
 import java.util.List;
 
 public class DriveQuickstart {
+    public static List<File> driveFilesList=null;
     private static final String APPLICATION_NAME = "Google Drive API Java Quickstart";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
+    static  NetHttpTransport HTTP_TRANSPORT=null;
+
 
     /**
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
      */
     private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE);
-    private static final String CREDENTIALS_FILE_PATH = "/credentials2.json";
+    private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
     /**
      * Creates an authorized Credential object.
@@ -59,25 +62,42 @@ public class DriveQuickstart {
 
     public static void main(String... args) throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+        HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
                 .build();
 
         // Print the names and IDs for up to 10 files.
-//        FileList result = service.files().list()
-//                .setPageSize(10)
-//                .setFields("nextPageToken, files(id, name)")
-//                .execute();
-//        List<File> files = result.getFiles();
-//        if (files == null || files.isEmpty()) {
-//            System.out.println("No files found.");
-//        } else {
-//            System.out.println("Files:");
-//            for (File file : files) {
-//                System.out.printf("%s (%s)\n", file.getName(), file.getId());
-//            }
-//        }
+        FileList result = service.files().list()
+                .setPageSize(10)
+                .setFields("nextPageToken, files(id, name)")
+                .execute();
+        List<File> files = result.getFiles();
+        if (files == null || files.isEmpty()) {
+            System.out.println("No files found.");
+        } else {
+            System.out.println("Files:");
+            driveFilesList=files;
+            for (File file : files) {
+                System.out.printf("%s (%s)\n", file.getName(), file.getId());
+            }
+        }
+    }
+    public static List<File> getFileList(){
+        return driveFilesList;
+    }
+
+    public void downloadFile(String googleDrivefileId,String fileName) throws IOException {
+        String fileId = googleDrivefileId;
+        Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                .setApplicationName(APPLICATION_NAME)
+                .build();
+        OutputStream outputStream = new FileOutputStream("src/download/"+fileName);
+        service.files().get(fileId)
+                .executeMediaAndDownloadTo(outputStream);
+        outputStream.flush();
+        outputStream.close();
+        System.out.println("downloaded");
     }
 
     public static void uploadFile() throws IOException, GeneralSecurityException {
