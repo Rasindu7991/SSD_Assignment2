@@ -38,7 +38,7 @@
     <div style="margin-top: 10px ; display: inline-block">
         <form method="post" action="hello">
 <%--        <button type="button" onclick="download()">save file</button>--%>
-            <button type="submit" style="margin-left:20px; onclick="download()" class="btn btn-success" name="button4">save and upload file</button>
+            <button type="submit" style="margin-left:20px;" onclick="download()" class="btn btn-success" name="button4">save and upload file</button>
             <button type="submit"  class="btn btn-primary" name="button5">View Files</button>
         </form>
     </div>
