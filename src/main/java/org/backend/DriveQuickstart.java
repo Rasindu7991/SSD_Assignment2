@@ -26,6 +26,7 @@ public class DriveQuickstart {
     private static final String APPLICATION_NAME = "Google Drive API Java Quickstart";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
+    private static final String UPLOAD_DIRECTORY_PATH = "C://Users/User/Downloads/"
     static  NetHttpTransport HTTP_TRANSPORT=null;
 
 
@@ -107,7 +108,7 @@ public class DriveQuickstart {
                 .build();
         File fileMetadata = new File();
         fileMetadata.setName("newtext.txt");
-        java.io.File filePath = new java.io.File("C://Users/User/Downloads/my-filename.txt");
+        java.io.File filePath = new java.io.File(UPLOAD_DIRECTORY_PATH + "googlebuddyfile.txt");
         FileContent mediaContent = new FileContent("text/txt", filePath);
         File file = service.files().create(fileMetadata, mediaContent)
                 .setFields("id")
