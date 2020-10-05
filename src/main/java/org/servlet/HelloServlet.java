@@ -40,6 +40,7 @@ public class HelloServlet extends HttpServlet {
             }
             try {
                 DriveQuickstart.uploadFile();
+                request.getRequestDispatcher("Sucess2.jsp").forward(request, response);
 
             } catch (GeneralSecurityException e) {
                 e.printStackTrace();
@@ -58,9 +59,15 @@ public class HelloServlet extends HttpServlet {
                 request.setAttribute("file2Id", driveFiles.get(1).getId());
                 request.setAttribute("file2name", driveFiles.get(1).getName());
 
+                request.setAttribute("file3Id", driveFiles.get(2).getId());
                 request.setAttribute("file3name", driveFiles.get(2).getName());
+
+                request.setAttribute("file4Id", driveFiles.get(3).getId());
                 request.setAttribute("file4name", driveFiles.get(3).getName());
+
+                request.setAttribute("file5Id", driveFiles.get(4).getId());
                 request.setAttribute("file5name", driveFiles.get(4).getName());
+
                 request.setAttribute("file6name", driveFiles.get(5).getName());
                 request.setAttribute("file7name", driveFiles.get(6).getName());
                 request.setAttribute("file8name", driveFiles.get(7).getName());
@@ -75,15 +82,31 @@ public class HelloServlet extends HttpServlet {
         if (request.getParameter("button1") != null) {
             String file1ID = request.getParameter("file1ID");
             String file1Name= request.getParameter("file1Name");
-            String fileType=request.getParameter("file1Type");
             driveQuickstart.downloadFile(file1ID,file1Name);
             request.getRequestDispatcher("Sucess.jsp").forward(request, response);
         }
         if (request.getParameter("button2") != null) {
             String file2ID = request.getParameter("file2ID");
             String file2Name= request.getParameter("file2Name");
-            System.out.println("file2 id"+file2ID);
             driveQuickstart.downloadFile(file2ID,file2Name);
+            request.getRequestDispatcher("Sucess.jsp").forward(request, response);
+        }
+        if (request.getParameter("button10") != null) {
+            String file3ID = request.getParameter("file3ID");
+            String file3Name= request.getParameter("file3Name");
+            driveQuickstart.downloadFile(file3ID,file3Name);
+            request.getRequestDispatcher("Sucess.jsp").forward(request, response);
+        }
+        if (request.getParameter("button11") != null) {
+            String file4ID = request.getParameter("file4ID");
+            String file4Name= request.getParameter("file4Name");
+            driveQuickstart.downloadFile(file4ID,file4Name);
+            request.getRequestDispatcher("Sucess.jsp").forward(request, response);
+        }
+        if (request.getParameter("button12") != null) {
+            String file5ID = request.getParameter("file5ID");
+            String file5Name= request.getParameter("file5Name");
+            driveQuickstart.downloadFile(file5ID,file5Name);
             request.getRequestDispatcher("Sucess.jsp").forward(request, response);
         }
     }

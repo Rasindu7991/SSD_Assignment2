@@ -34,7 +34,7 @@
 </nav>
 <center>
     <h1>
-        <a href="" class="typewrite" data-period="2000" data-type='[ "DOWNLOADED SUCESSFULLY!!!" ]'>
+        <a href="" class="typewrite" data-period="2000" data-type='[ "Uploaded SUCESSFULLY!!!" ]'>
             <span class="wrap"></span>
         </a>
     </h1>
